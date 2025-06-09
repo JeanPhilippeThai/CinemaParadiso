@@ -22,7 +22,7 @@ models:
       +materialized: view
     cleaned:
       +materialized: table
-    intermediate:
+    before_analysis:
       +materialized: view
     for_analysis:
       +materialized: table
