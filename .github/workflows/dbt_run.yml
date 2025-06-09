@@ -39,6 +39,8 @@ jobs:
           echo '${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}' > /tmp/credentials.json 
 
       - name: Run dbt
+        env:
+          DBT_GCP_PROJECT_CINEMA: ${{ secrets.GCP_PROJECT_CINEMA_ID }}
         working-directory: ./dbt_cinemaparadiso
         run: |
           dbt deps
