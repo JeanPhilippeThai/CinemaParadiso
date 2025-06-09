@@ -37,4 +37,5 @@ jobs:
         working-directory: ./dbt_cinemaparadiso
         run: |
           dbt deps
-          dbt run
+          dbt run --select state:modified
+          dbt docs generate
