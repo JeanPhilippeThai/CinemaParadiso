@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw_bigquery_dataset
+    database: cinemaparadiso-462409
+    schema: cinema_paradiso
+    tables:
+      - name: raw_bfi_movies
+      - name: raw_MoviesOnStreamingPlatforms
+      - name: raw_cinema_box_office
+      - name: raw_cinema_ticket_sales
+      - name: raw_enhanced_box_office
+      - name: raw_greatest_films
+      - name: raw_imdb_movies
+      - name: raw_movie_statistics
+      - name: raw_netflix_movies

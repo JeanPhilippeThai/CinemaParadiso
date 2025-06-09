@@ -18,5 +18,11 @@ clean-targets:
 
 models:
   dbt_cinemaparadiso:
-    example:
+    cleaning:
       +materialized: view
+    cleaned:
+      +materialized: table
+    intermediate:
+      +materialized: view
+    for_analysis:
+      +materialized: table
