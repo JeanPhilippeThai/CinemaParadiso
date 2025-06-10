@@ -1,0 +1,47 @@
+name: dbt Run
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  dbt-run:
+    name: Run dbt
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'  # Version plus stable pour dbt
+
+      - name: Install dbt and BigQuery adapter
+        run: |
+          python -m pip install --upgrade pip
+          pip install dbt-core dbt-bigquery
+
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}  # Utilise le même secret partout
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Write GCP credentials to file
+        run: |
+          mkdir -p /tmp
+          echo '${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}' > /tmp/credentials.json 
+
+      - name: Run dbt
+        env:
+          DBT_GCP_PROJECT_CINEMA: ${{ secrets.GCP_PROJECT_CINEMA_ID }}
+        working-directory: ./dbt_cinemaparadiso
+        run: |
+          dbt deps
+          dbt run --profiles-dir config
