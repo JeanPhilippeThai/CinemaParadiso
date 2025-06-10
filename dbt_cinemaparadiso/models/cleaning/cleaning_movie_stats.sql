@@ -35,5 +35,5 @@ WITH clean_columns_movie_stats AS (
     
   FROM {{ source('raw_bigquery_dataset', 'raw_movie_statistics') }}
 )
-SELECT * FROM clean_columns_movie_stats;
+SELECT * FROM clean_columns_movie_stats
 

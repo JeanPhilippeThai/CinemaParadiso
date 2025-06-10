@@ -1,6 +1,6 @@
 
 #craete enhanced_box_office_cleaning_view
-
+CREATE OR REPLACE VIEW cinemaparadiso-462409.cinema_paradiso.cleaned_enhanced_box_office AS
 WITH enhanced_rename AS(
   SELECT
     Rank AS movie_rank,
