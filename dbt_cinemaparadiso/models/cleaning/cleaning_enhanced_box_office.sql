@@ -10,7 +10,7 @@ WITH enhanced_rename AS(
     `Domestic %` AS domestic_percentage,
     _Foreign AS foreign_gross,
     `Foreign %` AS foreign_percentage,
-    Year AS movie_Year,
+    Year AS movie_year,
     COALESCE(Genres, 'unknown') AS genres, -- Added COALESCE for genres
     COALESCE(Rating, 'unknown') AS rating,   -- Added COALESCE for rating
     Vote_Count AS vote_count,
