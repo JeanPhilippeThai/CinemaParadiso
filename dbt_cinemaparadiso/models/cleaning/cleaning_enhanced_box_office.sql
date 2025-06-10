@@ -1,5 +1,6 @@
 
 #craete enhanced_box_office_cleaning_view
+CREATE OR REPLACE VIEW cinemaparadiso-462409.cinema_paradiso.cleaned_enhanced_box_office AS
 WITH enhanced_rename AS(
   SELECT
     Rank AS movie_rank,
@@ -36,7 +37,7 @@ WITH enhanced_rename AS(
         CASE WHEN CONTAINS_SUBSTR(genres, 'Western') THEN 1 ELSE 0 END AS genre_western,
     
     COALESCE(Production_Countries, 'unknown') AS production_countries -- Added COALESCE for production_countries
-  FROM cinemaparadiso-462409.cinema_paradiso.raw_enhanced_box_office
+  FROM {{ source('raw_bigquery_dataset', 'raw_enhanced_box_office') }}
 ),
 title_lower_case AS(
   SELECT
@@ -50,7 +51,7 @@ title_lower_case AS(
   FROM enhanced_rename
 )
 SELECT *
-FROM title_lower_case;
+FROM title_lower_case
 
 
 

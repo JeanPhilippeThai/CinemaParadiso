@@ -10,8 +10,7 @@ WITH renamed_and_coalesced AS (
     `Box Office Collection` AS box_office_collection, -- Renamed and handled space
     time_minute,
     Votes AS imdb_votes -- Renamed for clarity
-  FROM
-    `cinemaparadiso-462409.cinema_paradiso.raw_cinema_box_office` -- Added backticks for robustness
+    FROM {{ source('raw_bigquery_dataset', 'raw_cinema_box_office') }} 
 ),
 final_cleaning AS (
   SELECT
@@ -20,4 +19,4 @@ final_cleaning AS (
   FROM renamed_and_coalesced
 )
 SELECT *
-FROM final_cleaning;
+FROM final_cleaning
