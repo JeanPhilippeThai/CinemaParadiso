@@ -19,4 +19,4 @@ final_cleaning AS (
   FROM renamed_and_coalesced
 )
 SELECT *
-FROM final_cleaning;
+FROM final_cleaning

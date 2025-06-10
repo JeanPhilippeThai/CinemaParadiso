@@ -51,7 +51,7 @@ title_lower_case AS(
   FROM enhanced_rename
 )
 SELECT *
-FROM title_lower_case;
+FROM title_lower_case
 
 
 
