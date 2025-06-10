@@ -1,4 +1,4 @@
-unested_genre as(
+with unested_genre as(
   SELECT
     LOWER(
       TRIM(
