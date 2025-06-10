@@ -1,5 +1,5 @@
 select
     *
 from
-    {{ ref('cleaned_example') }}
+    {{ ref('ref_language_mapping') }}
 limit 10
