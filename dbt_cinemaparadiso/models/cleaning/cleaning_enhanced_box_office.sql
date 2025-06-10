@@ -37,7 +37,7 @@ WITH enhanced_rename AS(
         CASE WHEN CONTAINS_SUBSTR(genres, 'Western') THEN 1 ELSE 0 END AS genre_western,
     
     COALESCE(Production_Countries, 'unknown') AS production_countries -- Added COALESCE for production_countries
-  FROM cinemaparadiso-462409.cinema_paradiso.raw_enhanced_box_office
+  FROM {{ source('raw_bigquery_dataset', 'raw_enhanced_box_office') }}
 ),
 title_lower_case AS(
   SELECT
