@@ -1,4 +1,3 @@
-- Basic movie profitability metrics
 SELECT 
   movie_title,
   production_year,
