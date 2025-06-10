@@ -4,5 +4,3 @@ select
 from 
     {{ source('raw_bigquery_dataset', 'raw_bfi_movies') }}
 limit 10
--- from
---     {{ ref('cleaning_example') }}
