@@ -1,0 +1,25 @@
+- Basic movie profitability metrics
+SELECT 
+  movie_title,
+  production_year,
+  production_budget,
+  domestic_gross,
+  worldwide_gross,
+  -- Calculate profit margins
+  (domestic_gross - production_budget) as domestic_profit,
+  (worldwide_gross - production_budget) as worldwide_profit,
+  -- Calculate ROI (Return on Investment)
+  ROUND((domestic_gross / production_budget), 2) as domestic_roi,
+  ROUND((worldwide_gross / production_budget), 2) as worldwide_roi,
+  -- Profitability categories
+  CASE 
+    WHEN (worldwide_gross / production_budget) >= 3.0 THEN 'Highly Profitable'
+    WHEN (worldwide_gross / production_budget) >= 2.0 THEN 'Profitable' 
+    WHEN (worldwide_gross / production_budget) >= 1.0 THEN 'Break Even'
+    ELSE 'Loss'
+  END as profitability_category,
+  movie_averageRating,
+  movie_numerOfVotes
+FROM {{ ref('cleaning_movie_stats') }}
+WHERE production_budget > 0 AND worldwide_gross > 0
+ORDER BY worldwide_roi DESC
