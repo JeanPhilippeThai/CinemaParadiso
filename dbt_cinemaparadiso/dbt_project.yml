@@ -26,3 +26,5 @@ models:
       +materialized: view
     for_analysis:
       +materialized: table
+    ref_tables:
+      +materialized: table

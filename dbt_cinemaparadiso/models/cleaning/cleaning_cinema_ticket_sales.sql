@@ -4,8 +4,6 @@ SELECT
   Ticket_Price,
   Movie_Genre,
   Seat_Type,
-  
-
   SAFE_CAST(
     CASE 
       WHEN LOWER(Number_of_Person) = 'alone' THEN '1'
