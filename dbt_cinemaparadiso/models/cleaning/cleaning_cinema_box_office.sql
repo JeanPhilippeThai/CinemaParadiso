@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW cinemaparadiso-462409.cinema_paradiso.cleaned_cinema_box_office AS
+
 WITH renamed_and_coalesced AS (
   SELECT
     Movie AS title,
