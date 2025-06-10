@@ -1,5 +1,5 @@
 select
     *
 from
-    {{ ref('ref_language_mapping') }}
+    {{ ref('cleaned_cinema_ticket_sales') }}
 limit 10
