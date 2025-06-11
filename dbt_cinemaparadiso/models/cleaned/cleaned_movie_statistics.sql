@@ -1,3 +1,3 @@
 SELECT 
     *
-{{ ref('cleaning_movie_statistics') }}
+FROM {{ ref('cleaning_movie_statistics') }}
