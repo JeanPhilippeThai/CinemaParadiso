@@ -1,0 +1,13 @@
+SELECT 
+  CASE 
+    WHEN Age BETWEEN 18 AND 25 THEN '18-25'
+    WHEN Age BETWEEN 26 AND 35 THEN '26-35'
+    WHEN Age BETWEEN 36 AND 45 THEN '36-45'
+    WHEN Age BETWEEN 46 AND 60 THEN '46-60'
+    ELSE 'Other'
+  END AS Age_Group,
+  Movie_Genre,
+  COUNT(*) AS total_tickets_sold
+FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_cinema_ticket_sales`
+GROUP BY Age_Group, Movie_Genre
+ORDER BY Age_Group, total_tickets_sold DESC
