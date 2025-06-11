@@ -64,7 +64,7 @@ movie_statistics_clean4 AS(
 )
 
 
---- 5. Clean the title column: Remove leading and trailing whitespace,commas, dashes, apostrophes, parenthesis
+--- 5. Clean the title column: Remove leading and trailing whitespace,commas, dashes, apostrophes, parenthesis!
 SELECT
     *,
     LOWER(REGEXP_REPLACE(REGEXP_REPLACE(TRIM(title), r'[^a-zA-Z0-9 ]', ''), r'\s+',' ')) AS title_title
