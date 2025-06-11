@@ -19,6 +19,6 @@ SELECT
   END as profitability_category,
   movie_averageRating,
   movie_numerOfVotes
-FROM {{ ref('cleaning_movie_stats') }}
+FROM {{ ref('cleaned_movie_stats') }}
 WHERE production_budget > 0 AND worldwide_gross > 0
 ORDER BY worldwide_roi DESC
