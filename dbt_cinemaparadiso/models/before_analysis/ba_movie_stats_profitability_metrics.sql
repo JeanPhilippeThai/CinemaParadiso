@@ -4,7 +4,7 @@ SELECT
   production_budget,
   domestic_gross,
   worldwide_gross,
-  -- Calculate profit margins
+  -- Calculate profit margins - added title_title
   (domestic_gross - production_budget) as domestic_profit,
   (worldwide_gross - production_budget) as worldwide_profit,
   -- Calculate ROI (Return on Investment)
