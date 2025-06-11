@@ -1,6 +1,4 @@
 
-#craete enhanced_box_office_cleaning_view
-
 WITH enhanced_rename AS(
   SELECT
     Rank AS movie_rank,

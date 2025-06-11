@@ -1,2 +1,2 @@
 SELECT *
-From {{ ref('enhanced_cinema_box_office') }}
+From {{ ref('cleaning_enhanced_box_office') }}
