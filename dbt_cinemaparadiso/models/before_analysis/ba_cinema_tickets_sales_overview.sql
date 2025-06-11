@@ -70,3 +70,4 @@ UNION ALL
 SELECT * FROM seat_preferences
 UNION ALL
 SELECT * FROM group_size_stats;
+
