@@ -1,5 +1,5 @@
 SELECT 
-  movie_title,
+  title_title,
   production_year,
   production_budget,
   domestic_gross,
@@ -25,6 +25,6 @@ SELECT
   ROUND((domestic_gross / worldwide_gross) * 100, 1) as domestic_percentage,
   -- Engagement to budget ratio
   ROUND(movie_numerOfVotes / (production_budget / 1000000), 2) as votes_per_million_budget
-FROM {{ ref('cleaned_movie_stats') }}
+FROM {{ ref('cleaned_movie_statistics') }}
 WHERE production_budget > 0 AND worldwide_gross > 0
 ORDER BY worldwide_roi DESC
