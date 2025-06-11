@@ -10,4 +10,4 @@ SELECT
   AVG(Ticket_Price) AS avg_ticket_price
 FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_cinema_ticket_sales`
 GROUP BY Age_Group, Seat_Type
-ORDER BY Age_Group, total_tickets_sold DESC;
+ORDER BY Age_Group, total_tickets_sold DESC
