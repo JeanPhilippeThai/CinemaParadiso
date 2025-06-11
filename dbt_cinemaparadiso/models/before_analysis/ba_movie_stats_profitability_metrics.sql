@@ -19,7 +19,7 @@ SELECT
   END as profitability_category,
   movie_averageRating,
   movie_numerOfVotes,
-  -- Budget efficiency score (quality per dollar spent)
+  -- Budget efficiency score (quality per dollar spent) =+
   ROUND((movie_averageRating * movie_numerOfVotes) / production_budget, 4) as quality_efficiency_score,
   -- Domestic vs International performance
   ROUND((domestic_gross / worldwide_gross) * 100, 1) as domestic_percentage,
