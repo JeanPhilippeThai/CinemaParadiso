@@ -1,5 +1,5 @@
 SELECT 
-  movie_title,
+  title_title,
   production_year,
   production_budget,
   domestic_gross,
