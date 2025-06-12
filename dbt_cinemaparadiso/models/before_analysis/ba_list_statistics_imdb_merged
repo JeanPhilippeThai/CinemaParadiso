@@ -13,8 +13,9 @@ WITH
           r'[^a-zA-Z0-9\s]', '' ---remove all special characters
         )
       ) AS norm_title
-    FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_movie_statistics`
+    FROM {{ ref('cleaned_movie_statistics') }}
   ),
+  
 
 -- 2. Normalize list titles
   normalized_list AS (
@@ -30,7 +31,7 @@ WITH
           r'[^a-zA-Z0-9\s]', ''
         )
       ) AS norm_title
-    FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_list_movies`
+    FROM {{ ref('cleaned_list_movies') }}
   ),
 
 -- 3. Normalize IMDb titles
@@ -47,7 +48,7 @@ WITH
           r'[^a-zA-Z0-9\s]', ''
         )
       ) AS norm_title
-    FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_imdb_movies`
+    FROM {{ ref('cleaned_raw_imdb_movies') }}
   )
 
 -- 4. Select if there is a match, from which table I want to et the metrics from.
