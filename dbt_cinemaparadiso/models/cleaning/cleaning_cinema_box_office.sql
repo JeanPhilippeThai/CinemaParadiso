@@ -7,6 +7,8 @@ WITH renamed_and_coalesced AS (
     COALESCE(Director, 'unknown') AS director,
     COALESCE('Cast', 'unknown') AS movie_cast, -- Fixed: removed quotes around 'Cast'
     `Box Office Collection` AS box_office_collection,
+    `IMDB Rating` as imdb_rating,
+    Imdb_genre as genres,
     time_minute,
     Votes AS imdb_votes
   FROM {{ source('raw_bigquery_dataset', 'raw_cinema_box_office') }}
