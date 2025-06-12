@@ -1,0 +1,38 @@
+--- The 3 movie rating tables merged on title and year
+--1. Normalise the title in table stayistics
+WITH
+  normalized_statistics AS (
+    SELECT *,
+      LOWER(REGEXP_REPLACE(REGEXP_REPLACE(TRIM(title), r'[^a-zA-Z0-9 ]', ''), r'\s+', ' ')) AS norm_title
+    FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_movie_statistics`
+  ),
+  
+  --2. Normalise the title in table list
+  normalized_list AS (
+    SELECT *,
+      LOWER(REGEXP_REPLACE(REGEXP_REPLACE(TRIM(title), r'[^a-zA-Z0-9 ]', ''), r'\s+', ' ')) AS norm_title
+    FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_list_movies`
+  ),
+  
+  --3. Normalise the title in table idmb
+  normalized_imdb AS (
+    SELECT *,
+      LOWER(REGEXP_REPLACE(REGEXP_REPLACE(TRIM(title), r'[^a-zA-Z0-9 ]', ''), r'\s+', ' ')) AS norm_title
+    FROM `cinemaparadiso-462409.cinema_paradiso.cleaned_imdb_movies`
+  )
+
+--- 4. define which columns we want to select and join the three tables with full outer join so that we keep all the data.
+SELECT
+  list.title AS list_title,
+  list.year AS list_year,
+  statistics.title AS statistics_title,
+  statistics.year AS statistics_year,
+  imdb.title AS imdb_title,
+  imdb.year AS imdb_year
+FROM normalized_statistics AS statistics
+FULL OUTER JOIN normalized_list AS list
+  ON statistics.norm_title = list.norm_title
+  AND CAST(statistics.year AS STRING) = CAST(list.year AS STRING)
+FULL OUTER JOIN normalized_imdb AS imdb
+  ON COALESCE(statistics.norm_title, list.norm_title) = imdb.norm_title
+  AND CAST(COALESCE(statistics.year, list.year) AS STRING) = CAST(imdb.year AS STRING)
