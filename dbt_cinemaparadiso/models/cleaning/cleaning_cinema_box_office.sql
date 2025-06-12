@@ -5,7 +5,7 @@ WITH renamed_and_coalesced AS (
     Score AS score,
     `Adjusted Score` AS adjusted_score,
     COALESCE(Director, 'unknown') AS director,
-    COALESCE(Cast, 'unknown') AS movie_cast, -- Fixed: removed quotes around 'Cast'
+    COALESCE('Cast', 'unknown') AS movie_cast, -- Fixed: removed quotes around 'Cast'
     `Box Office Collection` AS box_office_collection,
     time_minute,
     Votes AS imdb_votes
