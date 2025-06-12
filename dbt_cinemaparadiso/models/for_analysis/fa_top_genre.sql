@@ -1,4 +1,4 @@
-SELECT 'Action' AS genre, SUM(genre_action) AS count, AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_action = 1 UNION ALL
+SELECT 'Action' AS genre, SUM(genre_action) AS count, AVG(weighted_score) AS weighted_score , AVG(worldwide_gross) AS avg_worldwide_gross  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_action = 1 UNION ALL
 SELECT 'Adventure', SUM(genre_adventure) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_adventure = 1 UNION ALL
 SELECT 'Animation', SUM(genre_animation) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_animation = 1 UNION ALL
 SELECT 'Comedy', SUM(genre_comedy) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_comedy = 1 UNION ALL
@@ -16,4 +16,4 @@ SELECT 'Sci-Fi', SUM(genre_scifi) , AVG(weighted_score) AS weighted_score , AVG(
 SELECT 'TV Movie', SUM(genre_tv_movie) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_tv_movie = 1 UNION ALL
 SELECT 'Thriller', SUM(genre_thriller) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_thriller = 1 UNION ALL
 SELECT 'War', SUM(genre_war) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_war = 1 UNION ALL
-SELECT 'Western', SUM(genre_western) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_western = 1 
+SELECT 'Western', SUM(genre_western) , AVG(weighted_score) AS weighted_score , AVG(worldwide_gross)  FROM {{ ref('fa_total_cinema_box_office_join') }} where genre_western = 1 
