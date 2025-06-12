@@ -10,7 +10,7 @@ jobs:
   dbt-run:
     name: Run dbt
     runs-on: ubuntu-latest
-    container: ghcr.io/dbt-labs/dbt-bigquery:1.9.latest  # Utilisation directe de l'image Docker
+    container: ghcr.io/dbt-labs/dbt-bigquery:1.9.latest
 
     steps:
       - name: Checkout repository
@@ -26,8 +26,8 @@ jobs:
 
       - name: Write GCP credentials to file
         run: |
-          mkdir -p ~/.dbt
-          echo '${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}' > ~/.dbt/credentials.json
+          mkdir -p /tmp
+          echo '${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}' > /tmp/credentials.json
 
       - name: Run dbt
         env:
