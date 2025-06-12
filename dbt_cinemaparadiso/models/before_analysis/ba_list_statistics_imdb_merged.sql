@@ -90,4 +90,4 @@ FULL OUTER JOIN normalized_list AS list
   AND CAST(statistics.year AS STRING) = CAST(list.year AS STRING)
 FULL OUTER JOIN normalized_imdb AS imdb
   ON COALESCE(statistics.norm_title, list.norm_title) = imdb.norm_title
-  AND CAST(COALESCE(statistics.year, list.year) AS STRING) = CAST(imdb.year AS STRING);
+  AND CAST(COALESCE(statistics.year, list.year) AS STRING) = CAST(imdb.year AS STRING)
