@@ -13,7 +13,7 @@ SELECT
     `Production budget _` AS production_budget, 
     `Domestic gross _` AS domestic_gross, 
     `Worldwide gross _` AS worldwide_gross
-FROM {{ ref('raw_movie_statistics')}} 
+FROM {{ source('raw_bigquery_dataset', 'raw_movie_statistics') }} 
 ),
 
 
