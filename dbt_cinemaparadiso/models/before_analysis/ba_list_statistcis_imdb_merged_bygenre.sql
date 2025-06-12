@@ -27,6 +27,6 @@ SELECT
       CASE WHEN CONTAINS_SUBSTR(genre, 'Biography') THEN 1 ELSE 0 END AS genre_biography,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Short') THEN 1 ELSE 0 END AS genre_short,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Film-Noir') THEN 1 ELSE 0 END AS genre_film_noir
-FROM {{ ref('ba_list_statistics_imdb_merged_bygenre') }}
+FROM {{ ref('ba_list_statistics_imdb_merged') }}
 WHERE duration > 70
 
