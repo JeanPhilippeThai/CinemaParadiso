@@ -27,11 +27,7 @@ jobs:
       - name: Write GCP credentials to file
         run: |
           mkdir -p /tmp
-          echo "${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}" | sed 's/\\n/\/g' > /tmp/credentials.json
-
-      - name: Validate credentials file
-        run: |
-          cat /tmp/credentials.json | python3 -m json.tool
+          echo '${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}' > /tmp/credentials.json 
 
       - name: Run dbt
         env:
