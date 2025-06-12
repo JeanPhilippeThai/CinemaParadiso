@@ -1,4 +1,4 @@
--- 1. Normalize statistics titles
+-- 1. Normalize statistics titles: 
 WITH
   normalized_statistics AS (
     SELECT *,
