@@ -1,4 +1,3 @@
-
 WITH renamed_and_coalesced AS (
   SELECT
     Movie AS title,

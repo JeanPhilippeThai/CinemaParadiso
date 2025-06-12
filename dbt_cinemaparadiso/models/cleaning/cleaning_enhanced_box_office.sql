@@ -62,4 +62,3 @@ SELECT
 FROM title_lower_case
 
 
-
