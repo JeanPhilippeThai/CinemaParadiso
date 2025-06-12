@@ -8,6 +8,7 @@ filtered_movies AS (
     ceb.imdb_rating,
     ceb.vote_count,
     ceb.worldwide_gross,
+    ceb.weighted_score
   FROM {{ ref('cleaned_enhanced_box_office') }} ceb
   CROSS JOIN avg_gross
   WHERE ceb.worldwide_gross < avg_gross.avg_worldwide_gross

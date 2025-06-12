@@ -48,7 +48,10 @@ title_lower_case AS(
     END AS imdb_rating
   FROM enhanced_rename
 )
-SELECT *
+SELECT *,
+  (
+    (imdb_rating * vote_count) + (MIN(vote_count) OVER () * AVG(imdb_rating) OVER ())
+  ) / NULLIF((vote_count + MIN(vote_count) OVER ()), 0) AS weighted_score
 FROM title_lower_case
 
 
