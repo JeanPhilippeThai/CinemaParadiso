@@ -27,11 +27,12 @@ jobs:
       - name: Write GCP credentials to file
         run: |
           mkdir -p /tmp
-          echo '${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}' > /tmp/credentials.json
+          printf "%s" "${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}" > /tmp/credentials.json
 
       - name: Run dbt
         env:
           DBT_GCP_PROJECT_CINEMA: ${{ secrets.GCP_PROJECT_CINEMA_ID }}
+          GOOGLE_APPLICATION_CREDENTIALS: /tmp/credentials.json
         working-directory: ./dbt_cinemaparadiso
         run: |
           dbt deps
