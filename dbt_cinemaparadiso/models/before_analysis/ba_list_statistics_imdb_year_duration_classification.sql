@@ -40,6 +40,6 @@ SELECT
     , genre_film_noir
     , ((rating * votes) + (MIN(votes) OVER () * AVG(rating) OVER ())) / 
         (votes + MIN(votes) OVER ()) AS weighted_score
-FROM cinemaparadiso-462409.cinema_paradiso.fa_list_statistics_imdb_merged_bygenre
+FROM {{ ref('ba_list_statistcis_imdb_merged_bygenre') }}
 
 
