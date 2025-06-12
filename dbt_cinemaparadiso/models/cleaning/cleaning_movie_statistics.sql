@@ -13,7 +13,7 @@ SELECT
     `Production budget _` AS production_budget, 
     `Domestic gross _` AS domestic_gross, 
     `Worldwide gross _` AS worldwide_gross
-FROM `cinemaparadiso-462409.cinema_paradiso.raw_movie_statistics` 
+FROM {{ ref('raw_movie_statistics')}} 
 ),
 
 
