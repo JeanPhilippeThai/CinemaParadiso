@@ -12,5 +12,5 @@ df_number_movies_per_genre.columns = ["genre", "number_of_movies"]
 df_number_movies_per_genre = df_number_movies_per_genre.sort_values(by="number_of_movies", ascending=False)
 
 # create a csv file
-csv_filename = 'fa_number_movies_per_genre_nogh '
-fa_number_movies_per_genre_nogh .to_csv(csv_filename, index=False)
+csv_filename = 'fa_number_movies_per_genre_nogh'
+a_number_movies_per_genre_nogh.to_csv(csv_filename, index=False)
