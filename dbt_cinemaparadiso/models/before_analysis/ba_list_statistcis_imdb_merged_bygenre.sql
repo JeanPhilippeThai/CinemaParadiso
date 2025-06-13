@@ -1,5 +1,5 @@
 --- 1. Filter out movies shorter then 70 min and splited the genre column in individual columns (1 present, 0 abscent)
---- 2. Added the weighted score
+--- 2. Added the weighted score.
 SELECT 
   *,
   ((rating * votes) + (MIN(votes) OVER () * AVG(rating) OVER ())) / 
