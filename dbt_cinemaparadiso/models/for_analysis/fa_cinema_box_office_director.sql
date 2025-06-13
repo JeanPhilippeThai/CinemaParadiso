@@ -2,7 +2,7 @@ with this as (
 select cinema.*,
 movie.director AS director,
 COALESCE(cinema.duration, movie.duration) AS duration
-FROM {{ ref('fa_total_cinema_box_office_joinn') }} AS cinema
+FROM {{ ref('fa_total_cinema_box_office_join') }} AS cinema
 left join {{ ref('cleaning_movie_statistics') }} AS movie
 on 
 LOWER( ---lower all letters
