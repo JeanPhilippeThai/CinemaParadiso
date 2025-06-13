@@ -1,43 +1,10 @@
---- 1. Select columns and add standarised names with imdb and mivies_list
-WITH movie_statistics_clean1 AS(
+--- 1. Filter out movies shorter then 70 min and splited the genre column in individual columns (1 present, 0 abscent)
+--- 2. Added the weighted score
 SELECT 
-    movie_title AS title,
-    -- extract the year and cast to date -- 
-    EXTRACT(YEAR FROM CAST(production_date AS DATE)) AS year,
-    runtime_minutes AS duration,
-    genres AS genre,
-    director_name AS director,
-    movie_averageRating AS rating, 
-    movie_numerOfVotes AS votes, 
-    approval_Index, 
-    `Production budget _` AS production_budget, 
-    `Domestic gross _` AS domestic_gross, 
-    `Worldwide gross _` AS worldwide_gross
-FROM {{ source('raw_bigquery_dataset', 'raw_movie_statistics') }} 
-),
-
-
---- 2. Remove the empty values: director, not empty but "-" (326 rows, many are duplicates)
-movie_statistics_clean2 AS(
-    SELECT 
-        *
-    FROM movie_statistics_clean1
-    WHERE director != "-"
-),
-
---- 3. Look for duplicated values (title, year and director): no duplicates
-movie_statistics_clean3 AS(
-SELECT
-    *,
-    ROW_NUMBER() OVER(PARTITION BY title, year, director) AS row_num
-FROM movie_statistics_clean2
-),
-
---- 4. Add a columns with the genre present/ not present: 
-movie_statistics_clean4 AS(  
-  SELECT
-      *,
-      CASE WHEN CONTAINS_SUBSTR(genre, 'Action') THEN 1 ELSE 0 END AS genre_action,
+  *,
+  ((rating * votes) + (MIN(votes) OVER () * AVG(rating) OVER ())) / 
+      (votes + MIN(votes) OVER ()) AS weighted_score , 
+  CASE WHEN CONTAINS_SUBSTR(genre, 'Action') THEN 1 ELSE 0 END AS genre_action,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Adventure') THEN 1 ELSE 0 END AS genre_adventure,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Animation') THEN 1 ELSE 0 END AS genre_animation,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Comedy') THEN 1 ELSE 0 END AS genre_comedy,
@@ -59,13 +26,7 @@ movie_statistics_clean4 AS(
       CASE WHEN CONTAINS_SUBSTR(genre, 'Western') THEN 1 ELSE 0 END AS genre_western,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Biography') THEN 1 ELSE 0 END AS genre_biography,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Short') THEN 1 ELSE 0 END AS genre_short,
-      CASE WHEN CONTAINS_SUBSTR(genre, 'Film-Noir') THEN 1 ELSE 0 END AS genre_film_noir,
-  FROM movie_statistics_clean3
-)
+      CASE WHEN CONTAINS_SUBSTR(genre, 'Film-Noir') THEN 1 ELSE 0 END AS genre_film_noir
+FROM {{ ref('ba_list_statistics_imdb_merged') }}
+WHERE duration > 70
 
-
---- 5. Clean the title column: Remove leading and trailing whitespace,commas, dashes, apostrophes, parenthesis!
-SELECT
-    *,
-    LOWER(REGEXP_REPLACE(REGEXP_REPLACE(TRIM(title), r'[^a-zA-Z0-9 ]', ''), r'\s+',' ')) AS title_title
-FROM movie_statistics_clean4

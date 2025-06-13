@@ -22,7 +22,7 @@ WITH cleaning_greatest_film1 AS(
       rank_afc_1998, 
       rank_wga_2005, 
       rank_ss_2012
-  FROM cinemaparadiso-462409.cinema_paradiso.cleaning_greatest_film
+  FROM {{ ref('cleaning_greatest_film') }}
 ),
 
 --- 2. Look for dupuplicates (row_num> 1)

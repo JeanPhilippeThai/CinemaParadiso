@@ -68,7 +68,8 @@ imdb_movies_cleaned6 AS(
       CASE WHEN CONTAINS_SUBSTR(genre, 'Fantasy') THEN 1 ELSE 0 END AS genre_fantasy,
       CASE WHEN CONTAINS_SUBSTR(genre, 'History') THEN 1 ELSE 0 END AS genre_history,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Horror') THEN 1 ELSE 0 END AS genre_horror,
-      CASE WHEN CONTAINS_SUBSTR(genre, 'Music') OR CONTAINS_SUBSTR(genre, 'Musical') THEN 1 ELSE 0 END AS genre_music,
+      CASE WHEN CONTAINS_SUBSTR(genre, 'Music') THEN 1 ELSE 0 END AS genre_music,
+      CASE WHEN CONTAINS_SUBSTR(genre, 'Musical') THEN 1 ELSE 0 END AS genre_musical,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Mystery') THEN 1 ELSE 0 END AS genre_mystery,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Romance') THEN 1 ELSE 0 END AS genre_romance,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Sci-Fi') OR CONTAINS_SUBSTR(genre, 'Science Fiction') THEN 1 ELSE 0 END AS genre_scifi,
@@ -77,6 +78,8 @@ imdb_movies_cleaned6 AS(
       CASE WHEN CONTAINS_SUBSTR(genre, 'War') THEN 1 ELSE 0 END AS genre_war,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Western') THEN 1 ELSE 0 END AS genre_western,
       CASE WHEN CONTAINS_SUBSTR(genre, 'Biography') THEN 1 ELSE 0 END AS genre_biography,
+      CASE WHEN CONTAINS_SUBSTR(genre, 'Short') THEN 1 ELSE 0 END AS genre_short,
+      CASE WHEN CONTAINS_SUBSTR(genre, 'Film-Noir') THEN 1 ELSE 0 END AS genre_film_noir,
   FROM imdb_movies_cleaned5
 )
 
