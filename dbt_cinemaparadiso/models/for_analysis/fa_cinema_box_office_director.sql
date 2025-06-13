@@ -1,4 +1,3 @@
-with this as (
 select cinema.*,
 movie.director AS director,
 COALESCE(cinema.duration, movie.duration) AS duration
@@ -26,7 +25,4 @@ LOWER( ---lower all letters
           ),
           r'[^a-zA-Z0-9\s]', '' ---remove all special characters
         )
-      ) )
-select count(*)
-from this
-where director is not null
+      ) 
