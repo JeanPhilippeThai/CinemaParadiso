@@ -25,5 +25,5 @@ for genres in genres_list:
 df_movie_scores_by_genre = pd.DataFrame(dict).transpose().reset_index().rename(columns={"index":"genre",0:"weighted_score"})
 
 # create a csv file
-csv_filename = 'fa_general_movie_scores_by_genre_nogh.csv'
-df_movie_scores_by_genre.to_csv(csv_filename, index=False)
+csv_filename = 'fa_general_movie_scores_by_genre_nogh'
+fa_general_movie_scores_by_genre_nogh.to_csv(csv_filename, index=False)
