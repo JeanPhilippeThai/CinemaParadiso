@@ -1,3 +1,9 @@
+import pandas as pd
+
+# Read table cleaned_imdb_movies
+query = "SELECT * FROM `cinemaparadiso-462409.cinema_paradiso.fa_list_statistics_imdb_merged_bygenre`"
+df_movie_scores = client.query(query).to_dataframe()
+
 # create a list with all the genres
 genres_list = ['genre_action', 'genre_adventure', 'genre_animation',
        'genre_comedy', 'genre_crime', 'genre_documentary', 'genre_drama',
