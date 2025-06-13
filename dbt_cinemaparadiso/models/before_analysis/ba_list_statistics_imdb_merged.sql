@@ -48,7 +48,7 @@ WITH
           r'[^a-zA-Z0-9\s]', ''
         )
       ) AS norm_title
-    FROM {{ ref('cleaned_imdb_movies') }} -- filtered by maximum lenght
+    FROM {{ ref('cleaned_imdb_movies') }} --- filtered by maximum lenght
   )
 
 -- 4. Select if there is a match, from which table I want to et the metrics from.
