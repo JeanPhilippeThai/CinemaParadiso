@@ -1,4 +1,4 @@
-select cinema.*,
+select cinema.* except(duration),
 movie.director AS director,
 COALESCE(cinema.duration, movie.duration) AS duration
 FROM {{ ref('fa_total_cinema_box_office_join') }} AS cinema
