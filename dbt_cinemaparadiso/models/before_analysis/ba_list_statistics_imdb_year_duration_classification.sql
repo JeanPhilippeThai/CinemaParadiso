@@ -1,4 +1,4 @@
---- year and duration are classified in different segments and added the weighted score
+---- year and duration are classified in different segments and added the weighted score
 SELECT 
     title
     , CASE
