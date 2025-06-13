@@ -1,4 +1,4 @@
--- 1. Remove description and ceryificate column. Removed min element from duration and cast it to integer.
+-- 1. Remove description and certificate column. Removed min element from duration and cast it to integer.
 WITH imdb_movies_cleaned1 AS(
   SELECT
       title, 
@@ -8,16 +8,16 @@ WITH imdb_movies_cleaned1 AS(
       rating, 
       stars, 
       votes
-  FROM {{ source('raw_bigquery_dataset', 'raw_imdb_movies') }} 
-  ),
+  FROM {{ source('raw_bigquery_dataset', 'raw_imdb_movies') }}  
+  ), 
 
 
--- 2. Filter TV shows out removing dates that have 2 years
+-- 2. Filter TV shows out removing dates that have 2 years and maximum lenght is 240 min
 imdb_movies_cleaned2 AS(
   SELECT 
       *
   FROM imdb_movies_cleaned1
-  WHERE year NOT LIKE "%–%"
+  WHERE year NOT LIKE "%–%" AND duration < 240
 ),
 
 
