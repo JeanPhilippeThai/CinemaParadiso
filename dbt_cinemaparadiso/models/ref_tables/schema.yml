@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: ref_language_mapping
+    description: >
+      Link between languages name and their abbreviation, for example: France -> fr
+    columns:
+      - name: code
+        description: language code
+      - name: name
+        description: language name
