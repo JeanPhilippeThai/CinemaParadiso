@@ -1,9 +1,8 @@
 import pandas as pd
 
-def get_fa_general_movie_scores_by_genre_nogh(bq_client):
+def get_fa_general_movie_scores_by_genre_nogh(client, query):
 
   # Read table cleaned_imdb_movies
-  query = "SELECT * FROM `cinemaparadiso-462409.cinema_paradiso.fa_list_statistics_imdb_merged_bygenre`"
   df_movie_scores = client.query(query).to_dataframe()
 
   # create a list with all the genres
@@ -29,14 +28,12 @@ def get_fa_general_movie_scores_by_genre_nogh(bq_client):
   return df_movie_scores_by_genre
 
 
-def get_fa_number_movies_per_genre_nogh(bq_client):
+def get_fa_number_movies_per_genre_nogh(client, query):
     # Read table cleaned_imdb_movies
-    query = "SELECT * FROM `cinemaparadiso-462409.cinema_paradiso.fa_list_statistics_imdb_merged_bygenre`"
     df_movie_scores = client.query(query).to_dataframe()
 
-
     # Number of movies per genre: agregate each of the genres to sum the 1
-    df_number_movies_per_genre = df_movie_scores[genres_list].sum()
+    df_number_movies_per_genre = df_movie_scores["genres_list"].sum()
     df_number_movies_per_genre = df_number_movies_per_genre.reset_index()
     df_number_movies_per_genre.columns = ["genre", "number_of_movies"]
     df_number_movies_per_genre = df_number_movies_per_genre.sort_values(by="number_of_movies", ascending=False)
