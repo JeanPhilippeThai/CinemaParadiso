@@ -27,15 +27,15 @@ def get_fa_general_movie_scores_by_genre_nogh(client, query):
 
   return df_movie_scores_by_genre
 
+# NOT WORKING SO COMMENTED
+# def get_fa_number_movies_per_genre_nogh(client, query):
+#     # Read table cleaned_imdb_movies
+#     df_movie_scores = client.query(query).to_dataframe()
 
-def get_fa_number_movies_per_genre_nogh(client, query):
-    # Read table cleaned_imdb_movies
-    df_movie_scores = client.query(query).to_dataframe()
+#     # Number of movies per genre: agregate each of the genres to sum the 1
+#     df_number_movies_per_genre = df_movie_scores["genres_list"].sum()
+#     df_number_movies_per_genre = df_number_movies_per_genre.reset_index()
+#     df_number_movies_per_genre.columns = ["genre", "number_of_movies"]
+#     df_number_movies_per_genre = df_number_movies_per_genre.sort_values(by="number_of_movies", ascending=False)
 
-    # Number of movies per genre: agregate each of the genres to sum the 1
-    df_number_movies_per_genre = df_movie_scores["genres_list"].sum()
-    df_number_movies_per_genre = df_number_movies_per_genre.reset_index()
-    df_number_movies_per_genre.columns = ["genre", "number_of_movies"]
-    df_number_movies_per_genre = df_number_movies_per_genre.sort_values(by="number_of_movies", ascending=False)
-
-    return df_number_movies_per_genre
+#     return df_number_movies_per_genre

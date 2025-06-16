@@ -33,11 +33,12 @@ def main():
     table_id = "fa_general_movie_scores_by_genre_nogh"
     _send_dataframe_to_bigquery(client, df_general, dataset_id, table_id)
 
-    # Create the table fa_number_movies_per_genre_nogh
-    query_number = "SELECT * FROM `cinemaparadiso-462409.cinema_paradiso.fa_list_statistics_imdb_merged_bygenre`"
-    df_number = cristina.get_fa_number_movies_per_genre_nogh(client, query_number)
-    table_id = "fa_number_movies_per_genre_nogh"
-    _send_dataframe_to_bigquery(client, df_number, dataset_id, table_id)  
+    # NOT WORKING SO COMMENTED
+    # # Create the table fa_number_movies_per_genre_nogh
+    # query_number = "SELECT * FROM `cinemaparadiso-462409.cinema_paradiso.fa_list_statistics_imdb_merged_bygenre`"
+    # df_number = cristina.get_fa_number_movies_per_genre_nogh(client, query_number)
+    # table_id = "fa_number_movies_per_genre_nogh"
+    # _send_dataframe_to_bigquery(client, df_number, dataset_id, table_id)  
 
 
 def _connect_to_bigquery():
@@ -46,10 +47,10 @@ def _connect_to_bigquery():
     """
     logger.info("Connecting to BigQuery")
 
-    credentials_path = os.getenv('GOOGLE_APPLICATION_CINEMA_CREDENTIALS')
+    credentials_path = os.getenv('GCP_CINEMAPARADISO_CREDENTIALS')
     
     if not credentials_path:
-        raise ValueError("La variable GOOGLE_APPLICATION_CINEMA_CREDENTIALS n'est pas définie")
+        raise ValueError("La variable GCP_CINEMAPARADISO_CREDENTIALS= n'est pas définie")
 
     credentials = service_account.Credentials.from_service_account_file(
         credentials_path,
