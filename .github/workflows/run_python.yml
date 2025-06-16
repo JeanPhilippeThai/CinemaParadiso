@@ -34,6 +34,6 @@ jobs:
 
       - name: Run Python script
         env:
-          GOOGLE_APPLICATION_CINEMA_CREDENTIALS: $HOME/.config/gcloud/application_default_credentials.json
+          GCP_CINEMAPARADISO_CREDENTIALS: $HOME/.config/gcloud/application_default_credentials.json
         run: |
           python dev/main.py
