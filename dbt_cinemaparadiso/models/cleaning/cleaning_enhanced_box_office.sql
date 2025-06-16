@@ -16,7 +16,7 @@ WITH enhanced_rename AS (
     WHEN Production_Countries IS NULL THEN "unknown"
     WHEN REGEXP_CONTAINS(Production_Countries, r',') THEN "Cooperative of Countries"
     ELSE Production_Countries
-    END AS production_country_group
+    END AS production_country
     
     -- Genre flags
     CASE WHEN CONTAINS_SUBSTR(genres, 'Action') THEN 1 ELSE 0 END AS genre_action,

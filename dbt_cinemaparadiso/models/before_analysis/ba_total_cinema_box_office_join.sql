@@ -57,13 +57,14 @@ SELECT
     CAST(cinema.time_minute AS INT64) AS duration,
     enhanced.domestic_gross AS domestic_gross,
     enhanced.original_language AS original_language,
+    enhanced.production_country AS production_country,
     COALESCE(enhanced.genres, cinema.genres) AS genres
 -- 5. Full outer join
 FROM normalized_enhanced AS enhanced
 FULL OUTER JOIN normalized_cinema AS cinema
   ON enhanced.norm_title = cinema.norm_title
   AND CAST(enhanced.movie_year AS STRING) = CAST(cinema.movie_year AS STRING))
-  select title,year,rating,votes,duration,worldwide_gross,domestic_gross,original_language,
+  select title,year,rating,votes,duration,worldwide_gross,domestic_gross,original_language,production_country,
    CASE WHEN CONTAINS_SUBSTR(genres, 'Action') THEN 1 ELSE 0 END AS genre_action,
         CASE WHEN CONTAINS_SUBSTR(genres, 'Adventure') THEN 1 ELSE 0 END AS genre_adventure,
         CASE WHEN CONTAINS_SUBSTR(genres, 'Animation') THEN 1 ELSE 0 END AS genre_animation,
