@@ -29,11 +29,11 @@ jobs:
         env:
           GCP_CREDS: ${{ secrets.GCP_CINEMAPARADISO_CREDENTIALS }}
         run: |
-          mkdir -p $HOME/.config/gcloud/
-          echo "$GCP_CREDS" > $HOME/.config/gcloud/application_default_credentials.json
+          mkdir -p ~/.config/gcloud/
+          echo "$GCP_CREDS" > ~/.config/gcloud/application_default_credentials.json
 
       - name: Run Python script
         env:
-          GCP_CINEMAPARADISO_CREDENTIALS: $HOME/.config/gcloud/application_default_credentials.json
+          GCP_CINEMAPARADISO_CREDENTIALS: ~/.config/gcloud/application_default_credentials.json
         run: |
           python dev/main.py
