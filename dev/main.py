@@ -46,10 +46,10 @@ def _connect_to_bigquery():
     """
     logger.info("Connecting to BigQuery")
 
-    credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+    credentials_path = os.getenv('GOOGLE_APPLICATION_CINEMA_CREDENTIALS')
     
     if not credentials_path:
-        raise ValueError("La variable GOOGLE_APPLICATION_CREDENTIALS n'est pas définie")
+        raise ValueError("La variable GOOGLE_APPLICATION_CINEMA_CREDENTIALS n'est pas définie")
 
     credentials = service_account.Credentials.from_service_account_file(
         credentials_path,
