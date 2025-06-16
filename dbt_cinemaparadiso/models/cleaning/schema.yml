@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: cleaning_bfi_movies
+    description: Cleaning data from the BFI (British Film Institute) database.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: release_year
+        description: Year the movie was released.
+
+  - name: cleaning_cinema_box_office
+    description: Data on cinema box office revenue.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: box_office_revenue
+        description: Revenue generated at the box office.
+
+  - name: cleaning_cinema_ticket_sales
+    description: Cleaning data on cinema ticket sales.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: tickets_sold
+        description: Number of tickets sold.
+
+  - name: cleaning_enhanced_box_office
+    description: Box office data enriched with additional metrics.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: total_revenue
+        description: Total revenue generated.
+  
+  - name: cleaning_greatest_film
+    description: List of films considered among the greatest according to various sources.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: ranking
+        description: Film ranking.
+
+  - name: cleaning_list_movies
+    description: Cleaning list of movies.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: genre
+        description: Genre of the movie.
+
+  - name: cleaning_movie_statistics
+    description: Cleaning general statistics about movies.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: rating
+        description: Rating of the movie.
+
+  - name: cleaning_movie_stats
+    description: Additional Cleaning statistics about movies.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: duration_minutes
+        description: Duration of the movie in minutes.
+
+  - name: cleaning_netflix_bfi_movies
+    description: Movies available on Netflix matched with the BFI dataset.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: available_on_netflix
+        description: Indicates whether the movie is available on Netflix.
+
+  - name: cleaning_netflix_movies
+    description: Cleaning data of Netflix movies.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: netflix_release_date
+        description: Release date on Netflix.
+
+  - name: cleaning_raw_imdb_movies
+    description: Cleaning raw IMDb movie data.
+    columns:
+      - name: movie_title
+        description: Title of the movie.
+      - name: imdb_score
+        description: IMDb score of the movie.
