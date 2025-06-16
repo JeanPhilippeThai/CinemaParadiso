@@ -23,7 +23,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install google-cloud-bigquery pandas
+          pip install google-cloud-bigquery pandas db-dtypes
+          # Vérification des packages installés
+          pip list | grep -E "google-cloud-bigquery|pandas|db-dtypes"
 
       - name: Create credentials file
         env:
@@ -31,6 +33,7 @@ jobs:
         run: |
           mkdir -p /home/runner/.config/gcloud/
           echo "$GCP_CREDS" > /home/runner/.config/gcloud/application_default_credentials.json
+          # Vérification que le fichier a bien été créé
           ls -la /home/runner/.config/gcloud/
 
       - name: Run Python script
