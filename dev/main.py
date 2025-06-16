@@ -50,7 +50,7 @@ def _connect_to_bigquery():
     credentials_path = os.getenv('GCP_CINEMAPARADISO_CREDENTIALS')
     
     if not credentials_path:
-        raise ValueError("La variable GCP_CINEMAPARADISO_CREDENTIALS= n'est pas définie")
+        raise ValueError("La variable GCP_CINEMAPARADISO_CREDENTIALS n'est pas définie")
 
     credentials = service_account.Credentials.from_service_account_file(
         credentials_path,
