@@ -157,7 +157,7 @@ cinema AS (
       ) AS norm_title
     , rating
     , votes
-    , year
+    , CAST(year AS INT64) AS year
     , null AS language
     , null AS duration
     , genre_action AS action
@@ -292,7 +292,7 @@ merged_1 AS (
     , COALESCE(l.year, s.year, i.year, c.year, n.year, b.year) AS year
     , COALESCE(l.duration, s.duration, i.duration, c.duration, n.duration, b.duration) AS duration
     , COALESCE(l.worldwide_gross, s.worldwide_gross, i.worldwide_gross, c.worldwide_gross, n.worldwide_gross, b.worldwide_gross) AS worldwide_gross
-    , COALESCE(s.language,  c.language, l.language, i.language,n.language, b.language) AS language
+    , COALESCE(s.language,  c.language, l.language, i.language, n.language, b.language) AS language
     -- weighted scores
     , c.weighted_score AS score_cinema
     , n.weighted_score AS score_netflix
