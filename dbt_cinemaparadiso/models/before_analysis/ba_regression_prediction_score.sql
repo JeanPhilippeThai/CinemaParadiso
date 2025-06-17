@@ -182,7 +182,9 @@ cinema AS (
     , genre_western AS western 
     , 0 AS film_noir
     , null AS worldwide_gross
-    , weighted_score
+    , ((rating * votes)
+      + (MIN(votes) OVER () * AVG(rating) OVER ()))
+    / NULLIF((votes + MIN(votes) OVER ()), 0) AS weighted_score,
     , 1 AS in_cinema 
   FROM {{ ref('ba_total_cinema_box_office_join') }}
 ),
