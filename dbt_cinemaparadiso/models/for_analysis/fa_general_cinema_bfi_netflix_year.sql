@@ -19,4 +19,4 @@ SELECT
     WHEN in_general = 1 THEN "General"
     ELSE "Other"
   END AS platform
-FROM {{ref ('fa_general_cinema_bfi_netflix_merged')}}
+FROM {{ref ('ba_general_cinema_bfi_netflic_merged_without_filtering')}}
