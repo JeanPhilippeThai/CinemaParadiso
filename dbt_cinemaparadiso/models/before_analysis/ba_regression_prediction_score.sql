@@ -18,7 +18,7 @@ SELECT
     , votes
     , CAST(year AS INT64) AS year
     , language
-    , duration
+    , CAST(duration AS INT64) AS duration
     , genre_action AS action
     , genre_adventure AS adventure
     , genre_animation AS animation
@@ -40,7 +40,7 @@ SELECT
     , genre_biography AS biography
     , genre_western AS western 
     , genre_film_noir AS film_noir
-    , null AS worldwide_gross
+    , CAST(NULL AS NUMERIC) AS worldwide_gross
     , ((rating * votes) + (MIN(votes) OVER () * AVG(rating) OVER ())) 
         / NULLIF((votes + MIN(votes) OVER ()), 0) AS weighted_score --- calculate 
     , 1 AS in_list 
@@ -64,8 +64,8 @@ stats AS (
     , rating
     , votes
     , CAST(year AS INT64) AS year
-    , null AS language
-    , duration
+    , CAST(NULL AS STRING) AS language
+    , CAST(duration AS INT64) AS duration
     , genre_action AS action
     , genre_adventure AS adventure
     , genre_animation AS animation
@@ -111,8 +111,8 @@ ibmb AS (
     , rating
     , votes
     , CAST(year AS INT64) AS year
-    , null AS language
-    , duration
+    , CAST(NULL AS STRING) AS language
+    , CAST(duration AS INT64) AS duration
     , genre_action AS action
     , genre_adventure AS adventure
     , genre_animation AS animation
@@ -134,7 +134,7 @@ ibmb AS (
     , genre_biography AS biography
     , genre_western AS western 
     , genre_film_noir AS film_noir
-    , null AS worldwide_gross
+    , CAST(NULL AS NUMERIC) AS worldwide_gross
     , ((rating * votes) + (MIN(votes) OVER () * AVG(rating) OVER ())) 
         / NULLIF((votes + MIN(votes) OVER ()), 0) AS weighted_score --- calculate 
     , 1 AS in_ibmb 
@@ -158,8 +158,8 @@ cinema AS (
     , rating
     , votes
     , CAST(year AS INT64) AS year
-    , null AS language
-    , null AS duration
+    , CAST(NULL AS STRING) AS language
+    , CAST(NULL AS INT64) AS duration
     , genre_action AS action
     , genre_adventure AS adventure
     , genre_animation AS animation
@@ -181,7 +181,7 @@ cinema AS (
     , 0 AS biography
     , genre_western AS western 
     , 0 AS film_noir
-    , null AS worldwide_gross
+    , CAST(NULL AS NUMERIC) AS worldwide_gross
     , ((rating * votes)
       + (MIN(votes) OVER () * AVG(rating) OVER ()))
     / NULLIF((votes + MIN(votes) OVER ()), 0) AS weighted_score
@@ -207,7 +207,7 @@ netflix AS (
     , vote_count AS votes
     , EXTRACT (YEAR FROM release_date) AS year
     , language_name AS language
-    , null AS duration
+    , CAST(NULL AS INT64) AS duration
     , action
     , adventure
     , animation
@@ -229,7 +229,7 @@ netflix AS (
     , 0 AS biography
     , western
     , 0 AS film_noir 
-    , null AS worldwide_gross
+    , CAST(NULL AS NUMERIC) AS worldwide_gross
     , ((vote_average * vote_count) + (MIN(vote_count) OVER () * AVG(vote_average) OVER ())) 
         / NULLIF((vote_count + MIN(vote_count) OVER ()), 0) AS weighted_score 
     , 1 AS in_netflix
@@ -254,7 +254,7 @@ bfi AS (
     , vote_count AS votes
     , EXTRACT (YEAR FROM release_date) AS year
     , language_name AS language
-    , null AS duration
+    , CAST(NULL AS INT64) AS duration
     , action
     , adventure
     , animation
@@ -276,7 +276,7 @@ bfi AS (
     , 0 AS biography
     , western
     , 0 AS film_noir  
-    , null AS worldwide_gross
+    , CAST(NULL AS NUMERIC) AS worldwide_gross
     , ((vote_average * vote_count) + (MIN(vote_count) OVER () * AVG(vote_average) OVER ())) 
         / NULLIF((vote_count + MIN(vote_count) OVER ()), 0) AS weighted_score 
     , 1 AS in_bfi 
