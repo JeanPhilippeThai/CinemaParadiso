@@ -290,6 +290,9 @@ merged_1 AS (
     -- master title & year
     COALESCE(l.norm_title, s.norm_title, i.norm_title, c.norm_title, n.norm_title, b.norm_title) AS norm_title
     , COALESCE(l.year, s.year, i.year, c.year, n.year, b.year) AS year
+    , COALESCE(l.duration, s.duration, i.duration, c.duration, n.duration, b.duration) AS duration
+    , COALESCE(l.worldwide_gross, s.worldwide_gross, i.worldwide_gross, c.worldwide_gross, n.worldwide_gross, b.worldwide_gross) AS worldwide_gross
+    , COALESCE(s.language,  c.language, l.language, i.language,n.language, b.language) AS language
     -- weighted scores
     , c.weighted_score AS score_cinema
     , n.weighted_score AS score_netflix
