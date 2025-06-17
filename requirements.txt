@@ -1,4 +1,11 @@
-dbt-bigquery==1.9.2
-grpcio-status==1.71.0
-msgpack==1.1.0
-pandas-gbq==0.29.0
+dbt-bigquery
+dbt-core
+google-api-core
+google-auth
+google-auth-oauthlib
+google-cloud-bigquery
+google-cloud-core
+jupyter_core
+pandas
+requests
+requests-oauthlib
