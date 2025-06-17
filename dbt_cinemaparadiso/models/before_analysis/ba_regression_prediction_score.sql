@@ -342,4 +342,5 @@ merged_1 AS (
    AND COALESCE(l.year, s.year, i.year, c.year, n.year) = b.year
 )
 
-SELECT * FROM merged_1
+
+SELECT * FROM merged_1 
