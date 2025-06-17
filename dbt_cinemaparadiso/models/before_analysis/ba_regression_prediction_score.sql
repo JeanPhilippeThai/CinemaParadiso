@@ -184,7 +184,7 @@ cinema AS (
     , null AS worldwide_gross
     , ((rating * votes)
       + (MIN(votes) OVER () * AVG(rating) OVER ()))
-    / NULLIF((votes + MIN(votes) OVER ()), 0) AS weighted_score,
+    / NULLIF((votes + MIN(votes) OVER ()), 0) AS weighted_score
     , 1 AS in_cinema 
   FROM {{ ref('ba_total_cinema_box_office_join') }}
 ),
