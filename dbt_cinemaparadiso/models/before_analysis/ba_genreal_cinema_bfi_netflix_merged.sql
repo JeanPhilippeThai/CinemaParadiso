@@ -221,7 +221,7 @@ merged_1 AS (
   FULL OUTER JOIN bfi b ON COALESCE(g.title, c.title, n.title) = b.title AND COALESCE(g.year, c.year, n.year) = b.year
 )
 
---- 3. Create the table
+--- 3. Create the table:
 SELECT *,
        -- Number of sources the movie appears in
        in_general + in_cinema + in_netflix + in_bfi AS source_count
