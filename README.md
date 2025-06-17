@@ -22,7 +22,10 @@
 
 
 ## Code stucture
-Blabla
+The folders of the project are
+- dbt_cinemaparadiso: the DBT project connected to BigQuery
+- dev: the python project connected to BigQuery
+- colab_notebooks: contains all the notebooks from the team members
 
 
 ## Team organisation
