@@ -14,7 +14,7 @@ WITH enhanced_rename AS (
     COALESCE(Original_Language, 'unknown') AS original_language,
     CASE
     WHEN Production_Countries IS NULL THEN "unknown"
-    WHEN REGEXP_CONTAINS(Production_Countries, r',') THEN "Cooperative of Countries"
+    WHEN REGEXP_CONTAINS(Production_Countries, r',') THEN "Multi Countries"
     ELSE Production_Countries
     END AS production_country,
     
