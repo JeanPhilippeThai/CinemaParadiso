@@ -17,6 +17,7 @@
 
 
 **Key results**: To add beautiful graphs
+![image](https://github.com/user-attachments/assets/db2fa548-adbb-4f65-bf59-96759ed71a17)
 
 # Project organisation
 
