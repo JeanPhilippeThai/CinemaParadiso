@@ -4,7 +4,7 @@
 
 **Goal**: Help independant cinema to make data-driven decisions to improve its programming, profitability and customer engagement
 
-**Datasets**: 21k movies statistics, 15k streaming films, 6k cinema box office, 1400 transactions of people purchasing habits in cinema
+**Datasets from Kaggle and The Movie DB**: 21k movies statistics, 15k streaming films, 6k cinema box office, 1400 transactions of people purchasing habits in cinema
 
 
 **Stack**:
