@@ -1,9 +1,10 @@
 # CinemaParadiso - Data analysis project
 
-**Problems**: To add
+**Problems**: Small independent cinema are at risk of closing due to competition from larger commercial cinemas and streaming platforms
 
+**Goal**: Help independant cinema to make data-driven decisions to improve its programming, profitability and customer engagement
 
-**Datasets**: To add
+**Datasets**: 21k movies statistics, 15k streaming films, 6k cinema box office, 1400 transactions of people purchasing habits in cinema
 
 
 **Stack**:
@@ -34,3 +35,6 @@ The folders of the project are
 
 ## Team organisation
 We followed an **Agile methodology** throughout the project, working in 5-day sprints. Daily stand-up meetings (dailies) allowed us to stay aligned, quickly address blockers, and adapt our priorities as needed. This approach helped ensure consistent progress and team collaboration.
+
+# Conclusion
+
