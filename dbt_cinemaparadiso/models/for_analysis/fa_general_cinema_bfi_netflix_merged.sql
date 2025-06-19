@@ -1,3 +1,3 @@
 SELECT
     * 
-FROM {{ref ('ba_genreal_cinema_bfi_netflix_merged')}}
+FROM {{ref ('ba_general_cinema_bfi_netflic_merged')}}
